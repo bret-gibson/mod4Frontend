@@ -143,7 +143,7 @@ export default class QuestionContainter extends Component {
     }).then((comment) => {
       let updatedComments = this.state.question.comments.filter(
         (currentComment) => {
-          return currentComment.id != id;
+          return currentComment.id !== id;
         }
       );
       this.setState({

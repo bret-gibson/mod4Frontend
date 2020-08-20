@@ -42,21 +42,21 @@ export default class ProfilePage extends Component {
         </Link>
         {this.state.filter === "My Answers" ? (
           <div className="ui two item menu violet inverted">
-            <a className="item active" onClick={this.handleFilter}>
+            <Button className="item active" onClick={this.handleFilter}>
               My Answers
-            </a>
-            <a className="item" onClick={this.handleFilter}>
+            </Button>
+            <Button className="item" onClick={this.handleFilter}>
               My Submitted Questions
-            </a>
+            </Button>
           </div>
         ) : (
           <div className="ui two item menu violet inverted">
-            <a className="item" onClick={this.handleFilter}>
+            <Button className="item" onClick={this.handleFilter}>
               My Answers
-            </a>
-            <a className="item active" onClick={this.handleFilter}>
+            </Button>
+            <Button className="item active" onClick={this.handleFilter}>
               My Submitted Questions
-            </a>
+            </Button>
           </div>
         )}
         {this.state.filter === "My Answers"
