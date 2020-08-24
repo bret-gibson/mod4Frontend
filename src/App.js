@@ -6,6 +6,7 @@ import QuestionContainer from "./components/QuestionContainer";
 import SubmitQuestionForm from "./components/SubmitQuestionForm";
 import ProfilePage from "./components/ProfilePage";
 import { Route, Switch } from "react-router-dom";
+import CreateAccount from "./components/CreateAccount";
 
 class App extends Component {
   constructor() {
@@ -19,6 +20,7 @@ class App extends Component {
     // fetch("http://localhost:3000/users")
     fetch("https://ancient-cliffs-69900.herokuapp.com/users")
       .then((response) => response.json())
+
       .then((users) => {
         const user = users.find((user) => user.username === userObj.username);
         // fetch(`http://localhost:3000/users/${user.id}/login`);
@@ -29,6 +31,21 @@ class App extends Component {
           .then((userData) => {
             this.setState({ userData });
           });
+      });
+  };
+
+  createUser = (userObj) => {
+    // fetch("http://localhost:3000/users", {
+    fetch("https://ancient-cliffs-69900.herokuapp.com/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userObj),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        this.submitUser(data);
       });
   };
 
@@ -55,6 +72,18 @@ class App extends Component {
             path="/"
             render={() => (
               <Signin
+                submitUser={this.submitUser}
+                userData={this.state.userData}
+              />
+            )}
+          />
+
+          <Route
+            exact
+            path="/create-account"
+            render={() => (
+              <CreateAccount
+                createUser={this.createUser}
                 submitUser={this.submitUser}
                 userData={this.state.userData}
               />

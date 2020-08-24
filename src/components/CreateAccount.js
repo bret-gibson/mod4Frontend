@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { Card, Form, Button } from "semantic-ui-react";
 
-class Signin extends Component {
+class CreateAccount extends Component {
   constructor() {
     super();
     this.state = {
@@ -19,19 +19,15 @@ class Signin extends Component {
     });
   };
 
-  handleSubmit = (event) => {
+  handleCreate = (event) => {
     event.preventDefault();
     const user = {
       username: this.state.username,
     };
-    this.props.submitUser(user);
+    this.props.createUser(user);
+    // this.props.submitUser(user);
     this.props.history.push(`/question`);
     this.setState({ username: "" });
-  };
-
-  handleCreateClick = (event) => {
-    event.preventDefault();
-    this.props.history.push("/create-account");
   };
 
   style = {
@@ -52,11 +48,11 @@ class Signin extends Component {
         <Card
           centered={true}
           verticalalign="middle"
-          // onClick={this.props.handleChoice}
+          //   onClick={this.props.handleChoice}
         >
           <Card.Content>
             <Card.Description>
-              <h1>Sign In</h1>
+              <h1>Create Account</h1>
               <Form>
                 <Form.Field>
                   <label>Username</label>
@@ -72,16 +68,9 @@ class Signin extends Component {
                   color="violet"
                   type="submit"
                   value="Sign In"
-                  onClick={this.handleSubmit}
+                  onClick={this.handleCreate}
                 >
-                  Submit
-                </Button>
-                <Button
-                  color="violet"
-                  value="Create Account"
-                  onClick={this.handleCreateClick}
-                >
-                  Create Account
+                  Create Account and Sign In
                 </Button>
               </Form>
             </Card.Description>
@@ -91,4 +80,4 @@ class Signin extends Component {
     );
   }
 }
-export default withRouter(Signin);
+export default withRouter(CreateAccount);

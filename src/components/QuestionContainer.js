@@ -47,7 +47,7 @@ export default class QuestionContainter extends Component {
       question_id: this.state.question.id,
       choice: event.target.textContent,
     };
-    // fetch("http://localhost:3000/user_questions"
+    // fetch("http://localhost:3000/user_questions", {
     fetch("https://ancient-cliffs-69900.herokuapp.com/user_questions", {
       method: "POST",
       headers: {
@@ -116,7 +116,7 @@ export default class QuestionContainter extends Component {
       question_id: this.state.question.id,
       comment_text: comment,
     };
-    // fetch("http://localhost:3000/comments"
+    // fetch("http://localhost:3000/comments", {
     fetch("https://ancient-cliffs-69900.herokuapp.com/comments", {
       method: "POST",
       headers: {
