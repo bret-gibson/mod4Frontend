@@ -23,7 +23,7 @@ class App extends Component {
 
       .then((users) => {
         const user = users.find((user) => user.username === userObj.username);
-        // fetch(`http://localhost:3000/users/${user.id}/login`);
+        // fetch(`http://localhost:3000/users/${user.id}/login`)
         fetch(
           `https://ancient-cliffs-69900.herokuapp.com/users/${user.id}/login`
         )

@@ -20,7 +20,7 @@ export default class QuestionContainter extends Component {
   componentDidMount() {
     // fetch(
     //   `http://localhost:3000/users/${this.props.userData.id}/unique_question`
-    // );
+    // )
     fetch(
       `https://ancient-cliffs-69900.herokuapp.com/users/${this.props.userData.id}/unique_question`
     )
@@ -110,34 +110,33 @@ export default class QuestionContainter extends Component {
       });
   };
 
-  doSubmit = (comment) => {
-    const newCommentObj = {
-      user_id: this.props.userData.id,
-      question_id: this.state.question.id,
-      comment_text: comment,
-    };
-    // fetch("http://localhost:3000/comments", {
-    fetch("https://ancient-cliffs-69900.herokuapp.com/comments", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newCommentObj),
-    })
-      .then((response) => {
-        response.json();
-      })
-      .then((newComment) => {
-        this.setState({
-          question: { ...this.state.question, comments: newComment },
-        });
-      });
-  };
+  // doSubmit = (comment) => {
+  //   const newCommentObj = {
+  //     user_id: this.props.userData.id,
+  //     question_id: this.state.question.id,
+  //     comment_text: comment,
+  //   };
+  //   fetch("http://localhost:3000/comments", {
+  //     // fetch("https://ancient-cliffs-69900.herokuapp.com/comments", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(newCommentObj),
+  //   })
+  //     .then((response) => {
+  //       response.json();
+  //     })
+  //     .then((newComment) => {
+  //       this.setState({
+  //         question: { ...this.state.question, comments: newComment },
+  //       });
+  //     });
+  // };
 
   handleDelete = (event) => {
     let id = event.target.id;
-    // fetch(`http://localhost:3000/comments/${id}`
-
+    // fetch(`http://localhost:3000/comments/${id}`, {
     fetch(`https://ancient-cliffs-69900.herokuapp.com/comments/${id}`, {
       method: "DELETE",
     }).then((comment) => {
@@ -249,6 +248,7 @@ export default class QuestionContainter extends Component {
                 userData={this.props.userData}
                 question={this.state.question}
                 handleDelete={this.handleDelete}
+                doSubmit={this.doSubmit}
               />
             ) : (
               <h1 style={this.choiceDivStyle}>Loading Comments</h1>

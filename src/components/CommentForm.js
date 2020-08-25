@@ -15,6 +15,21 @@ export default class CommentForm extends Component {
     }
   }
 
+  // doSubmit = (comment) => {
+  //   const newCommentObj = {
+  //     user_id: this.props.userData.id,
+  //     question_id: this.props.question.id,
+  //     comment_text: comment,
+  //   };
+  //   fetch(`http://localhost:3000/comments`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(newCommentObj),
+  //   });
+  // };
+
   handleChange = (event) => {
     const value = event.target.value;
     const name = event.target.name;
@@ -31,28 +46,27 @@ export default class CommentForm extends Component {
     });
   };
 
-  handleUpdate = (event) => {
-    event.preventDefault();
-    const newCommentObj = {
-      user_id: this.props.userData.id,
-      question_id: this.props.question.id,
-      comment_text: this.state.comment,
-    };
-    // fetch(`http://localhost:3000/comments/${this.props.comment.id}`
-    fetch(
-      `https://ancient-cliffs-69900.herokuapp.com/comments/${this.props.comment.id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newCommentObj),
-      }
-    );
-    this.setState({
-      comment: "",
-    });
-  };
+  // handleUpdate = (event) => {
+  //   event.preventDefault();
+  //   const newCommentObj = {
+  //     user_id: this.props.userData.id,
+  //     question_id: this.props.question.id,
+  //     comment_text: this.state.comment,
+  //   };
+  //   fetch(`http://localhost:3000/comments/${this.props.comment.id}`, {
+  //     // fetch(
+  //     //   `https://ancient-cliffs-69900.herokuapp.com/comments/${this.props.comment.id}`,
+  //     //   {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(newCommentObj),
+  //   });
+  //   this.setState({
+  //     comment: "",
+  //   });
+  // };
 
   style = {
     width: "30%",
